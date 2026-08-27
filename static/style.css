@@ -1,1 +1,44 @@
+/* PARTE 1 – CONFIGURAÇÃO GERAL DA PÁGINA */
+* { 
+    box-sizing: border-box; 
+}
+
+body { 
+    margin: 0; 
+    font-family: Arial, sans-serif; 
+    background-color: #f2f5f8; 
+    color: #222222; 
+}
+
+/* PARTE 2 – PERSONALIZANDO O CABEÇALHO */
+header { 
+    background-color: #123a63; 
+    color: white; 
+    text-align: center; 
+    padding: 28px 16px; 
+}
+
+header h1 { 
+    margin: 0 0 8px 0; 
+}
+
+header p { 
+    margin: 0; 
+}
+
+/* PARTE 3 – ORGANIZANDO A ÁREA PRINCIPAL */
+main { 
+    width: 94%; 
+    max-width: 1200px; 
+    margin: 24px auto; 
+}
+
+/* PARTE 4 – CRIANDO OS PAINÉIS */
+.painel { 
+    background-color: white; 
+    padding: 22px; 
+    border-radius: 10px; 
+    margin-bottom: 22px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); 
+}
 
