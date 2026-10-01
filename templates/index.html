@@ -101,3 +101,101 @@ required></textarea>
 </main>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação de Manutenção</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>App de Solicitação de Manutenção</h1>
+
+        <!-- Formulário de Cadastro -->
+        <form action="/cadastrar" method="POST" class="formulario">
+            <div class="campo">
+                <label for="nome">Seu Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+
+            <div class="campo">
+                <label for="tipo_usuario">Tipo de Usuário:</label>
+                <select id="tipo_usuario" name="tipo_usuario" required>
+                    <option value="">Selecione...</option>
+                    <option value="Aluno">Aluno</option>
+                    <option value="Professor">Professor</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="sala">Sala / Local:</label>
+                <input type="text" id="sala" name="sala" required>
+            </div>
+
+            <div class="campo">
+                <label for="equipamento">Equipamento:</label>
+                <input type="text" id="equipamento" name="equipamento" required>
+            </div>
+
+            <div class="campo">
+                <label for="descricao">Descrição do Problema:</label>
+                <textarea id="descricao" name="descricao" rows="3" required></textarea>
+            </div>
+
+            <button type="submit" class="botao">Cadastrar solicitação</button>
+        </form>
+
+        <h2>Solicitações Cadastradas</h2>
+
+        <!-- Tabela com Suporte a Rolagem Responsiva -->
+        <div class="tabela-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Tipo</th>
+                        <th>Sala</th>
+                        <th>Equipamento</th>
+                        <th>Descrição</th>
+                        <th>Data</th>
+                        <th>Status</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for solicitacao in solicitacoes %}
+                    <tr>
+                        <td>{{ solicitacao.id }}</td>
+                        <td>{{ solicitacao.nome }}</td>
+                        <td>{{ solicitacao.tipo_usuario }}</td>
+                        <td>{{ solicitacao.sala }}</td>
+                        <td>{{ solicitacao.equipamento }}</td>
+                        <td>{{ solicitacao.descricao }}</td>
+                        <td>{{ solicitacao.data }}</td>
+                        <td>
+                            <span class="status {{ solicitacao.status.lower() }}">
+                                {{ solicitacao.status }}
+                            </span>
+                        </td>
+                        <td>
+                            {% if solicitacao.status != "Concluído" %}
+                                <a href="/concluir/{{ solicitacao.id }}" class="botao-concluir">Concluir</a>
+                            {% else %}
+                                Finalizada
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="9">Nenhuma solicitação cadastrada no momento.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
