@@ -1,0 +1,23 @@
+APP DE SOLICITAÇÃO DE MANUTENÇÃO
+
+COMO ABRIR NO VS CODE
+
+1. Extraia o arquivo ZIP.
+2. Abra o Visual Studio Code.
+3. Clique em Arquivo > Abrir Pasta.
+4. Selecione a pasta app_manutencao.
+5. Abra o terminal do VS Code.
+6. Execute:
+
+python -m pip install -r requirements.txt
+
+7. Depois execute:
+
+python app.py
+
+8. Abra no navegador o endereço exibido no terminal.
+Normalmente:
+
+http://127.0.0.1:5000
+
+Para encerrar o servidor, pressione Ctrl + C.
